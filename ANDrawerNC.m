@@ -1,12 +1,11 @@
 //
-//  WPDrawerNC.m
-//  Wallpapers3
+//  ANDrawerNC.m
 //
 //  Created by Oksana Kovalchuk on 6/17/14.
 //  Copyright (c) 2014 ANODA. All rights reserved.
 //
 
-#import "WPDrawerNC.h"
+#import "ANDrawerNC.h"
 #import "MSSPopMasonry.h"
 #define MCANIMATE_SHORTHAND
 #import <POP+MCAnimate.h>
@@ -19,15 +18,24 @@ static CGFloat CDCalculateStatusBarHeight() {
     [[UIApplication sharedApplication] statusBarFrame].size.height;
 }
 
-@interface WPDrawerNC () <UIGestureRecognizerDelegate>
+@interface ANDrawerNC () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign) BOOL isOpen;
 @property (nonatomic, strong) UIView *shawdowView;
 @property (nonatomic, strong) MASConstraint* leftSideConstraint;
 
+@property (nonatomic, strong) UIView *drawerView;
+@property (nonatomic, assign) CGFloat drawerWidth;
+
 @end
 
-@implementation WPDrawerNC
+@implementation ANDrawerNC
+
+- (void)updateDrawerView:(UIView *)drawerView width:(CGFloat)drawerWidth
+{
+    self.drawerWidth = drawerWidth;
+    self.drawerView = drawerView;
+}
 
 - (void)setDrawerView:(UIView *)drawerView
 {
@@ -46,7 +54,7 @@ static CGFloat CDCalculateStatusBarHeight() {
 
         make.top.bottom.equalTo(self.view);
         make.top.offset(CDCalculateStatusBarHeight());
-        make.width.equalTo(@(kDefaultMenuWidth));
+        make.width.equalTo(@(self.drawerWidth));
         self.leftSideConstraint = make.left.equalTo(self.view.mas_right).offset(0);
     }];
 }
@@ -97,7 +105,7 @@ static CGFloat CDCalculateStatusBarHeight() {
         [self.view endEditing:YES]; // hack for keyboard;
     }
     
-    CGFloat newOffset = isOpen ? -kDefaultMenuWidth : 0;
+    CGFloat newOffset = isOpen ? -self.drawerWidth : 0;
     POPSpringAnimation *leftSideAnimation = [POPSpringAnimation new];
     leftSideAnimation.toValue = @(newOffset);
     leftSideAnimation.property = [POPAnimatableProperty mas_offsetProperty];
@@ -136,16 +144,16 @@ static CGFloat CDCalculateStatusBarHeight() {
     }
     else if (recognizer.state == UIGestureRecognizerStateChanged)
     {
-        CGFloat startOffset = self.isOpen ? -kDefaultMenuWidth : 0;
+        CGFloat startOffset = self.isOpen ? -self.drawerWidth : 0;
         CGFloat newOffset = startOffset + translation.x;
         
-        newOffset = MIN(0, MAX(-kDefaultMenuWidth, newOffset));
+        newOffset = MIN(0, MAX(-self.drawerWidth, newOffset));
         self.leftSideConstraint.offset(newOffset);
         self.shawdowView.hidden = NO;
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
     {
-        BOOL newState = (self.drawerView.center.x < self.view.currentOrientationWidth);
+        BOOL newState = (self.drawerView.center.x < self.view.width);
         [self updateDrawerStateToOpened:newState];
     }
 }
