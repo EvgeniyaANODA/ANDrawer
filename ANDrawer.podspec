@@ -18,6 +18,8 @@ Pod::Spec.new do |spec|
   spec.dependency 'pop'
   spec.dependency 'POP+MCAnimate', '~> 1.1'
   spec.dependency 'MSSPopMasonry'
+  spec.dependency 'ReactiveCocoa', '~> 2.4.2'
+  spec.dependency 'FrameAccessor', '~> 1.3.2'
 
   spec.ios.deployment_target = '7.0'
 end
