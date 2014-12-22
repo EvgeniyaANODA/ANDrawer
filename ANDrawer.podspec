@@ -19,5 +19,5 @@ Pod::Spec.new do |spec|
   spec.dependency 'POP+MCAnimate', '~> 1.1'
   spec.dependency 'MSSPopMasonry'
 
-  spec.ios.deployment_target = '6.0'
+  spec.ios.deployment_target = '7.0'
 end
