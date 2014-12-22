@@ -7,9 +7,12 @@
 
 #import "ANDrawerNC.h"
 #import "MSSPopMasonry.h"
+#import "FrameAccessor.h"
+#import "ReactiveCocoa.h"
 
 #define MCANIMATE_SHORTHAND
 #import <POP+MCAnimate.h>
+
 
 static CGFloat const kDefaultDrawerVelocityTrigger = 350;
 static CGFloat const kStatusBarHeight = 20;
