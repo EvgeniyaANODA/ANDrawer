@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name     = 'ANDrawer'
-  spec.version  = '1.0.2'
+  spec.version  = '1.0.3'
   spec.license  = { :type => 'MIT' }
   spec.homepage = 'https://github.com/anodamobi/ANDrawer'
   spec.authors  = { 'Oksana Kovalchuk' => 'oksana@anoda.mobi' }
@@ -14,12 +14,12 @@ Pod::Spec.new do |spec|
   spec.framework = "Foundation", "UIKit"
   spec.requires_arc = true
 
-  spec.dependency 'ANHelperFunctions', '~> 1.0'
+  spec.dependency 'ANHelperFunctions'
   spec.dependency 'pop'
-  spec.dependency 'POP+MCAnimate', '~> 1.1'
+  spec.dependency 'POP+MCAnimate', '~> 2.0'
   spec.dependency 'MSSPopMasonry'
-  spec.dependency 'ReactiveCocoa', '~> 2.4.2'
-  spec.dependency 'FrameAccessor', '~> 1.3.2'
+  spec.dependency 'ReactiveCocoa', '~> 2.4'
+  spec.dependency 'FrameAccessor', '~> 2.0'
 
   spec.ios.deployment_target = '7.0'
 end
