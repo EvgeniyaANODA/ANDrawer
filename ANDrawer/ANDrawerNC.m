@@ -165,13 +165,10 @@ static CGFloat const kStatusBarHeight = 20;
 
 - (void)updateStateToOpened:(BOOL)isOpen
 {
-    if (isOpen)
+    self.backgroundView.hidden = NO;
+    if (self.avoidKeyboard)
     {
-        self.backgroundView.hidden = NO;
-        if (self.avoidKeyboard)
-        {
-            [self.view endEditing:YES]; // hack for keyboard;
-        }
+        [self.view endEditing:YES]; // hack for keyboard;
     }
     
     CGFloat newOffset = isOpen ? [self _offsetForOpenState] : 0;
