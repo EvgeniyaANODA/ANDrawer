@@ -10,8 +10,7 @@
 #import "FrameAccessor.h"
 #import "ReactiveCocoa.h"
 
-#define MCANIMATE_SHORTHAND
-#import <POP+MCAnimate.h>
+#import "POP+MCAnimate.h"
 
 
 static CGFloat const kDefaultDrawerVelocityTrigger = 350;
