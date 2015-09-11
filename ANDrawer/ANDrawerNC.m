@@ -165,7 +165,10 @@ static CGFloat const kStatusBarHeight = 20;
 
 - (void)updateStateToOpened:(BOOL)isOpen
 {
-    self.backgroundView.hidden = NO;
+    if (isOpen)
+    {
+        self.backgroundView.hidden = NO;
+    }
     if (self.avoidKeyboard)
     {
         [self.view endEditing:YES]; // hack for keyboard;
