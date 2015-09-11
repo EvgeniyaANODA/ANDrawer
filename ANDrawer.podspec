@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name     = 'ANDrawer'
-  spec.version  = '1.0.3'
+  spec.version  = '1.0.4'
   spec.license  = { :type => 'MIT' }
   spec.homepage = 'https://github.com/anodamobi/ANDrawer'
   spec.authors  = { 'Oksana Kovalchuk' => 'oksana@anoda.mobi' }
